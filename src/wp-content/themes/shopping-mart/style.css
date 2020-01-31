@@ -1,0 +1,340 @@
+/*
+Theme Name: Shopping Mart
+Theme URI: https://www.ceylonthemes.com/product/wordpress-shopping-cart-theme/
+Author URI: https://www.ceylonthemes.com
+Author: ceylonthemes
+Description: Shopping Mart is a responsive and fully customizable template with tons of features. The theme can be used to develop business, WooCommerce or Easy Digital download shopping cart - store front, portfolio and others web sites. The Flexibility and Theme Options such as WooCommerce integration, Product Slider, Product Grid, Header & footer Customization, typography features provided in theme will amaze you. Looking for a Feature rich Store front theme? Look no further! See the demo, The only theme you will ever need: https://wordpress.org/themes/shopping-mart/ For more information about Shopping Mart please go to https://www.ceylonthemes.com/product/wordpress-shopping-cart-theme/
+Version: 1.0.8
+Template: business-store
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: shopping-mart
+Tags: blog, e-commerce, theme-options, portfolio, one-column, two-columns,left-sidebar, right-sidebar, flexible-header, custom-colors, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+*/
+
+input[type="text"], 
+input[type="email"], 
+input[type="url"], 
+input[type="password"], 
+input[type="search"], 
+input[type="number"], 
+input[type="tel"], 
+input[type="range"], 
+input[type="date"], 
+input[type="month"], 
+input[type="week"], 
+input[type="time"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="color"], textarea {
+    border: 1px solid #1f88df;
+}
+
+a:hover,
+a:focus,
+.mimi-header-social-icon a:hover,
+.mimi-header-social-icon a:focus,
+.footer-foreground a:hover,
+.footer-foreground a:focus,
+.footer-foreground .site-info a:hover,
+.footer-foreground .site-info a:focus {
+	color:#1f88df;
+}
+
+.mimi-header-social-icon li a {
+	border-radius:25px;
+}
+
+button, input[type="button"], input[type="submit"] {
+    background-color: #1f88df;
+}
+
+.search-box {
+    border: 1px solid #1f88df;
+	border-radius: 3px;
+}
+.search-box:focus, .search-box:hover {
+	border-radius: 0px;
+}
+
+.search-box:focus,
+.search-box:hover {
+	box-shadow:2px 1px 2px #1f88df;
+}
+
+.cart-contents-count, 
+.wishlist-contents-count,
+.carousel-navigation a,
+#main_Carousel .carousel-indicators li.active {
+    background-color: #1f88df;
+}
+.product-wrapper .badge-wrapper .onsale {
+    background-color: #ffd700;
+}
+.carousel-navigation a {
+	border-radius:0px;
+}
+
+.wishlist-contents::before,
+.cart-contents::before , 
+.cart-contents-price {
+	color:#fff;
+}
+
+.product-navigation > ul > li > a::before {
+    color: #1f88df;
+}
+
+
+.wc-button-container a.add_to_cart_button, 
+.wc-button-container a.product_type_grouped, 
+.wc-button-container a.product_type_external, 
+.wc-button-container a.product_type_simple, 
+.wc-button-container a.product_type_variable {
+	background-color: #1f88df;
+	color:#fff;
+	border:none;
+}
+
+.wc-button-container a.add_to_cart_button:hover, 
+.wc-button-container a.product_type_grouped:hover, 
+.wc-button-container a.product_type_external:hover, 
+.wc-button-container a.product_type_simple:hover, 
+.wc-button-container a.product_type_variable:hover,
+.wc-button-container a.add_to_cart_button:focus, 
+.wc-button-container a.product_type_grouped:focus, 
+.wc-button-container a.product_type_external:focus, 
+.wc-button-container a.product_type_simple:focus, 
+.wc-button-container a.product_type_variable:focus {
+	border: none;
+	background-color:#fff;
+	color:#1f88df;
+}
+
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button {
+    background-color: #1f88df;
+    color: #FFFFFF;
+}
+
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt,
+nav.woocommerce-MyAccount-navigation ul li.is-active {
+    background-color: #1f88df;
+}
+
+.woocommerce fieldset {
+    border: 1px solid #1f88df;
+}
+
+span.price {
+    font-size: 15px;
+    color: #0f0f0f;
+}
+
+.woocommerce .woocommerce-breadcrumb a {
+    color: #1f88df;
+}
+
+.featured-section .section-title::after, 
+.page-title::after, 
+.featured-title::after {
+    border-bottom: 2px solid #1f88df;
+}
+
+ul.header-social-icon li a {
+    border-radius: 0;
+}
+
+.footer-widget h2.widget-title::after, .footer-widget h2.widgettitle::after {
+    border-bottom: #1f88df 2px solid;
+}
+
+.site-footer {
+    background: #f9f9f94f;
+    border-top: 3px solid #1f88df;
+}
+
+.scroll-top {
+    background: #1f88df;
+	border-radius: 24px;
+}
+
+.sticky {
+    position: relative;
+    border: 1px solid #EEEEE5;
+	padding-left:10px;
+	box-shadow: -2px -2px 2px 1px #eee;
+}
+
+#secondary .widget-title {
+    border-bottom: 2px solid #1f88df;
+}
+
+.site-header-background {
+	background-position: center center;
+	background-attachment: fixed;
+}
+
+.mini-header {
+    border-bottom: none;
+}
+
+#search-category {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.contact-list-top,
+.work-hours,
+.header-email, 
+.google-map-link,
+.site-title a,
+.site-branding-text p,
+.mimi-header-social-icon a {
+    color: #fff;
+}
+
+.google-map-link, .work-hours {
+	text-transform: capitalize;
+}
+
+.yith-wcwl-add-button a.add_to_wishlist {
+	padding: 6px 12px;
+	background-color: #1f88df;
+	color: #fff;
+	margin-bottom:10px;
+}
+.yith-wcwl-add-button a.add_to_wishlist:focus,
+.yith-wcwl-add-button a.add_to_wishlist:hover {
+	background-color:#fff ;
+	color: #1f88df;	
+}
+
+.woocommerce span.onsale {
+    background: #1f88df;
+}
+
+.blog .site-main > article, 
+.archive .site-main > article, 
+.search .site-main > article {
+    padding: 1em;
+	margin-bottom:2em;
+	border:1px solid #eee;
+}
+
+.site-header-background {
+	background-position: center top;
+	background-size: cover;
+}
+
+.cart-contents-count, .wishlist-contents-count {
+	box-shadow:unset;
+}
+
+.site-footer .container {
+	border-bottom:unset;
+}
+
+#masthead {
+    background-color: #1F4475;
+}
+
+#myBtn {
+    font-size: 16px;
+}
+
+.more-link {
+	color: #1f88df;
+	border: 1px solid #1f88df;
+}
+
+a.more-link:hover, 
+a.more-link:focus {
+	background-color: unset;
+	color:#FFFFFF;
+}
+
+.entry-footer .edit-link a.post-edit-link {
+	background-color:#1f88df;
+}
+
+.mimi-header-social-icon a {
+	background-color:transparent;
+}
+
+.mimi-header-social-icon .fa {
+	color:#FFFFFF;
+}
+
+.site-title {
+	text-transform:unset;
+}
+
+.product-image-wrapper a img:hover {
+	box-shadow:unset;
+}
+
+#main a.more-link:hover,
+#main a.more-link:focus {
+	background-color:#1f88df;
+}
+
+.wc-button-container .button, 
+.wc-button-container .product_add_to_wishlist,
+.wc-button-container .added_to_cart.wc-forward {
+    text-transform:  unset;
+}
+
+@media screen and (min-width: 48em) {
+
+	#myBtn {
+		background-color:#1f88df;
+	}
+
+	#sticky-nav {
+		background-color: #202122cc;
+		width:100%;
+	}
+	
+	#top-menu > li > a:hover,
+	#top-menu > li > a:focus {
+		color: #fff;
+		background-color:  #1f88df;
+	}
+	
+	#top-menu > li ul > li > a:hover,
+	#top-menu > li ul > li > a:focus {
+		color: #fff;
+		background-color:  #1f88df;
+	}
+	
+	.top-menu-layout-2 #top-menu > li > a {
+		color: #fff;
+	}	
+	
+}
+
+@media screen and (max-width: 48em) {
+	#top-menu > li > a:hover,
+	#top-menu > li > a:focus {
+		color: #1f88df ;
+		background-color:#fff;
+	}
+	.menu-toggle {
+		color:#FFFFFF;
+	}
+	.menu-toggle:hover,
+	.menu-toggle:focus {
+		color: #CCCCCC;
+	}
+	
+	#top-menu { 
+		margin-bottom:10px;
+	}
+			
+}
