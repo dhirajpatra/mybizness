@@ -1,0 +1,55 @@
+@media (max-width: 768px)
+{
+    body .col-md-6{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.b2s-faq-content a{
+    text-decoration: underline;
+    color: #444;
+    font-size: 14px !important;
+}
+.b2s-support-topic-img{
+    min-width: 3em;
+}
+
+.b2s-support-line{
+    margin-top: 0px!important;
+}
+
+.b2s-support-link-not-active {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: gray;
+    opacity: 0.5;
+}
+
+.b2s-margin-left-10 {
+    margin-left: 10px;
+}
+
+#b2s-support-check-system .glyphicon {
+    font-size: 15px;
+}
+
+#b2s-support-check-system hr {
+    margin-top: 0px !important;
+}
+
+.b2s-support-menu > li > a {
+    padding: 10px 15px !important;
+}
+
+.thumbnail-no-border{
+    border: 0px !important;
+}
+
+.b2s-sharing-debugger-result-area{
+    display: block;
+}
+
+.b2s-padding-top-8{
+    padding-top:8px;
+}

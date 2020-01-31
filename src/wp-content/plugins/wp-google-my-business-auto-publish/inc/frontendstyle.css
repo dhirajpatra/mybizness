@@ -1,0 +1,82 @@
+.gmb-review span{
+    display: block;
+}
+
+.gmb-review {
+    text-align: center;
+    /* margin: 0px 30px; */
+}
+
+.gmb-review-inner {
+    padding: 0px 30px; 
+}
+
+.review-date {
+    font-size: x-small;
+    opacity: .7;
+    margin-bottom: 20px;
+}
+.review-reviewer {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.review-rating i {
+    margin: 0px 1px;
+    color: #e3c007;
+}
+.review-rating {
+    margin-top: 5px;
+}
+
+
+.review-comment,.review-comment-readmore {
+font-style: italic;
+line-height: normal;
+}
+
+.gmb-reviews .slick-dots {
+    list-style: none;
+    text-align: center;
+}
+
+.gmb-reviews .slick-dots button {
+    text-indent: -9999px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    line-height: normal;
+    /* display: inline-block; */
+    background: #0000;
+    border: 2px solid #d9d9d9;
+    padding: 0px !important;
+    outline: 0px !important;
+    cursor: pointer;
+}
+
+.gmb-reviews .slick-dots .slick-active button {
+    background: #d9d9d9;
+}
+
+.gmb-reviews .slick-dots li {
+    display: inline-block;
+    margin: 5px 3px;
+}
+
+.review-quotes {
+    margin: 0px 5px;
+
+}
+
+.gmb-reviews:not(.make-me-slick) .gmb-review {
+    margin-bottom: 60px;
+}
+
+.read-more-link, .read-less-link {
+    text-decoration: none;
+    box-shadow: none !important;
+}
+
+/* .gmb-reviews .slick-list {
+    height: auto !important;
+} */

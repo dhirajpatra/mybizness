@@ -1,0 +1,171 @@
+version: "3"
+
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - reverse-proxy
+    restart: always
+    volumes:
+      - "$HOME/certs:/etc/nginx/certs:rw"
+      - "/var/run/docker.sock:/tmp/docker.sock"
+    labels:
+      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+
+  letsencrypt-nginx-proxy-companion:
+    container_name: nginx-letsencrypt
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - "$HOME/certs:/etc/nginx/certs:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+      - "DEFAULT_EMAIL=dhiraj.patra@gmail.com"
+    image: jrcs/letsencrypt-nginx-proxy-companion
+
+  web:
+    container_name: web
+    depends_on:
+      - letsencrypt-nginx-proxy-companion
+    build:
+      context: ./
+      dockerfile: deploy/web.docker
+    expose:
+      - "80"
+      #- "443"
+    networks:
+      - reverse-proxy
+      - back
+    restart: always
+    volumes:
+      - "./deploy/nginx/htpasswd:/etc/nginx/htpasswd"
+      - "$HOME/certs:/etc/nginx/certs"
+      - "./:/var/www"
+    environment:
+      - "VIRTUAL_HOST=app.dotai.tech"
+      - "VIRTUAL_PORT=49256"
+      #- "VIRTUAL_PORT=443"
+      # - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+      - "LETSENCRYPT_HOST=app.dotai.tech"
+    links:
+      - app
+
+  app:
+    container_name: app
+    build:
+      context: ./
+      dockerfile: deploy/app.docker
+    restart: always
+    volumes:
+      - ./:/var/www
+    links:
+      - database
+      - cache
+    environment:
+      # - "VIRTUAL_HOST=app.dotai.tech"
+      # - "VIRTUAL_PORT=49256"
+      - "DB_HOST=database"
+      - "DB_PORT=3306"
+      - "REDIS_PORT=6379"
+      - "REDIS_HOST=cache"
+    networks:
+      - reverse-proxy
+      - back
+
+  # wordpress:
+  #   depends_on:
+  #     - database
+  #     - letsencrypt-nginx-proxy-companion
+  #   image: wordpress:latest
+  #   expose:
+  #     - "80"
+  #   volumes:
+  #     - ./wordpress:/var/www/html
+  #   restart: always
+  #   environment:
+  #     - "VIRTUAL_HOST=blog.dotai.tech"
+  #     - "VIRTUAL_PORT=49257"
+  #     - "WORDPRESS_DB_HOST=database"
+  #     - "WORDPRESS_DB_USER=root"
+  #     - "WORDPRESS_DB_PASSWORD=myrootpass"
+  #     - "WORDPRESS_DB_NAME=myapp"
+  #     - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+  #     - "LETSENCRYPT_HOST=dotai.tech"
+  #   networks:
+  #     - reverse-proxy
+  #     - back
+
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - database
+      - letsencrypt-nginx-proxy-companion
+    image: phpmyadmin/phpmyadmin
+    expose:
+      - "80"
+    restart: always
+    environment:
+      - "VIRTUAL_HOST=db.dotai.tech"
+      - "VIRTUAL_PORT=49258"
+      - "PMA_HOST=database"
+      - "PMA_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "MYSQL_ROOT_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      # - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+      - "LETSENCRYPT_HOST=db.dotai.tech"
+    networks:
+      - reverse-proxy
+      - back
+  # db-backup:
+  #   image: alpine
+  #   tty: false
+  #   environment:
+  #     - TARGET=./mysql-dump
+  #   volumes:
+  #     - ./db/backup:/backup
+  #     - ./mysql-dump:/volume
+  #   command: sh -c "tar -cjf /backup/$${TARGET}.tar.bz2 -C /volume ./"
+  # db-restore:
+  #   image: alpine
+  #   environment:
+  #     - SOURCE=./mysql-dump
+  #   volumes:
+  #     - ./backup:/backup
+  #     - ./mysql-dump:/volume
+  #   command: sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/$${SOURCE}.tar.bz2"
+
+  database:
+    image: mysql:5.6
+    ports:
+      - "33061:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "MYSQL_DATABASE=myapp_07061974"
+    restart: always
+    volumes:
+      - ./mysql-dump:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - back
+
+  cache:
+    image: redis:3.0
+    ports:
+      - "63791:6379"
+    networks:
+      - back
+
+networks:
+  reverse-proxy:
+    external:
+      name: reverse-proxy
+  back:
+    driver: bridge
+
+volumes:
+  certs:

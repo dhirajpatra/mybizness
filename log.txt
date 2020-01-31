@@ -1,0 +1,13 @@
+
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:24: URI: /register	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126"}	 POST: []	 GET: []
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:24: URI: /sales/get_chart_data_for_dashboard	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126"}	 POST: []	 GET: []
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:24: URI: /manager/get_chart_data_for_dashboard	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126","sales_analytics_from":"2019-12-17","sales_analytics_to":"2020-01-17"}	 POST: []	 GET: []
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:40: URI: /register	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126","sales_analytics_from":"2019-12-17","sales_analytics_to":"2020-01-17"}	 POST: {"csrf":"87798e2fbe2e768f85159f0157494061d30a8126","companyName":"dsfdsfdsfdf","currency":"11","industry":"1","reason":"1","firstName":"fdsffsa","lastName":"fdfdas","inputEmail":"dhiraj.patra@gmail.com","ee_personal_code":"","inputPassword":"12345678","confirmPassword":"12345678","referral_code":""}	 GET: []
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:41: URI: /sales/get_chart_data_for_dashboard	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126","sales_analytics_from":"2019-12-17","sales_analytics_to":"2020-01-17"}	 POST: []	 GET: []
+------------------------------------------------------------------------------------------------------------------------
+17-01-2020 10:04:42: URI: /manager/get_chart_data_for_dashboard	 SESSION: {"ip":"192.168.32.2","query_params":[],"csrf":"87798e2fbe2e768f85159f0157494061d30a8126","sales_analytics_from":"2019-12-17","sales_analytics_to":"2020-01-17"}	 POST: []	 GET: []

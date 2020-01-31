@@ -1,0 +1,64 @@
+.bootstrap-datetimepicker-widget {
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.4);
+    background: white !important;
+    
+}
+.picker-switch.accordion-toggle {display: none !important;}
+
+
+#post-meta-locations-list .location-selected-icon {
+    font-size: 20px !important;
+    float: right;
+    margin-top: 2px;
+}
+
+
+
+.location-list-item-small .location-name {
+    font-weight: bold;
+    margin-right: 7px;
+    margin-left: -5px;
+}
+
+
+.location-image {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.location-information {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.location-information span {
+    display: block;
+}
+
+.location-list-item-small {
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.2);
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#post-meta-locations-list li {
+    width: 100%;
+    margin-right:0px !important;
+    box-sizing: border-box;
+}
+
+
+
+#post-meta-locations-list .location-name {
+    max-width: 162px;
+    
+}
+
+.location-list-item-small:not(.selected) {
+ opacity: .5;   
+}

@@ -1,0 +1,120 @@
+version: "3"
+
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - "80:80"
+      # - "443:443"
+    networks:
+      - reverse-proxy
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+  letsencrypt-nginx-proxy-companion:
+    container_name: nginx-letsencrypt
+    volumes:
+      - "$HOME/certs:/etc/nginx/certs:rw"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    image: jrcs/letsencrypt-nginx-proxy-companion
+
+  wordpress:
+    depends_on:
+      - database
+      - letsencrypt-nginx-proxy-companion
+    image: wordpress:latest
+    expose:
+      - "80"
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      - "VIRTUAL_HOST=mybizness.local"
+      - "VIRTUAL_PORT=49257"
+      - "WORDPRESS_DB_HOST=database"
+      - "WORDPRESS_DB_USER=root"
+      - "WORDPRESS_DB_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "WORDPRESS_DB_NAME=mybiznessapp_07061974"
+      - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+      - "LETSENCRYPT_HOST=mybizness.local"
+      - "WORDPRESS_CONFIG_EXTRA: |
+      // Enable Debug logging to the /wp-content/debug.log file
+      define('WP_DEBUG_LOG', true);
+      // Disable display of errors and warnings
+      define('WP_DEBUG_DISPLAY', false);
+      // Handle subpath /mybizness
+      define('WP_HOME','http://mybizness.local');
+      define('WP_SITEURL','http://mybizness.local');
+      $_SERVER['REQUEST_URI'] = '/mybizness' . $_SERVER['REQUEST_URI'];"
+    networks:
+      - reverse-proxy
+      - back
+
+  # phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - database
+      - letsencrypt-nginx-proxy-companion
+    image: phpmyadmin/phpmyadmin
+    expose:
+      - "80"
+    restart: always
+    environment:
+      - "VIRTUAL_HOST=db.localhost"
+      - "VIRTUAL_PORT=49258"
+      - "PMA_HOST=database"
+      - "PMA_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "MYSQL_ROOT_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+      - "LETSENCRYPT_HOST=db.localhost"
+    networks:
+      - reverse-proxy
+      - back
+  # db-backup:
+  #   image: alpine
+  #   tty: false
+  #   environment:
+  #     - TARGET=./mysql-dump
+  #   volumes:
+  #     - ./db/backup:/backup
+  #     - ./mysql-dump:/volume
+  #   command: sh -c "tar -cjf /backup/$${TARGET}.tar.bz2 -C /volume ./"
+  # db-restore:
+  #   image: alpine
+  #   environment:
+  #     - SOURCE=./mysql-dump
+  #   volumes:
+  #     - ./backup:/backup
+  #     - ./mysql-dump:/volume
+  #   command: sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/$${SOURCE}.tar.bz2"
+
+  database:
+    image: mysql:5.6
+    ports:
+      - "33061:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
+      - "MYSQL_DATABASE=mybiznessapp_07061974"
+    restart: always
+    volumes:
+      - ./mysql-dump:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - back
+
+  cache:
+    image: redis:3.0
+    ports:
+      - "63791:6379"
+    networks:
+      - back
+
+networks:
+  reverse-proxy:
+    external:
+      name: reverse-proxy
+  back:
+    driver: bridge
