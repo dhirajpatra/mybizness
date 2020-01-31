@@ -1,62 +1,45 @@
-# sales_crm
-this is sales crm
+# myBizness
+this is myBizness application
 
-## Sales CRM
+## myBizness
 
-Customer Relationship Management (CRM) is a system that manages customer interactions and data throughout the customer life-cycle between the customer and the company across different channels. In this tutorial, we are going to build a custom CRM in PHP, which a sales team can use to track customers through the entire sales cycle.
+Brands with fewer locations have to balance the importance of working online with the urgency of their day-to-day. BizHive does the hardest work for you, letting you spend more time with your customers.
+If you are a sole business owner, micro enterprise or a small business or want to start something from your home. We are here to help you FREE of cost. You can start with our starter program with no cost at all. We will integrate your local business with Google, FaceBook, Instagram and of course with high end SEO will help your customer to find out your business.
 
-We’ll be creating a simple CRM system for salespeople to:
+## How to install to develop
 
-Access their tasks
-View their leads
-Create new tasks for each lead
-Create new opportunity
-Close a sale
-Sales managers will be able to:
+Clone the code and change branch to dev:
+`git clone https://github.com/dhirajpatra/mybizness.git mybizness`
+`git checkout dev`
 
-Manage all customers
-Manage sales team
-View current sales activities
-Download Demo Files
+## Install VSCode IDE along with following pluggings
 
-Building Blocks of a CRM
-Here is a list of the essential components of the CRM:
+Docker
+Format HTML in PHP
+Bracket Pair Colorizer
+jQuwey Code Snippets
+js-css-html formatter
+php cs fixer
+php docblocker
+php extension pack
+php intelephense
+phpcs
+phpfrm - php formatter
+yaml
 
-Leads: initial contacts
-Accounts: Information about the companies you do business with
-Contact: Information about the people you know and work with. Usually, one account has many contacts
-Opportunities: Qualified leads
-Activities: Tasks, meetings, phone calls, emails and any other activities that allow you to interact with customers
-Sales: Your sales team
-Dashboard: CRM dashboards are much more than just eye candy. They should deliver key information at a glance and provide links to drill down for more details.
-Login: Salespeople and managers have different roles in the system. Managers have access to reports and sales pipeline information.
+## how to run and test
 
-System Requirements
-PHP 5.3+,
-MySQL or MariaDB
-Create CRM Database
-We will start by creating our custom CRM database. The main tables we will be using are:
+`sudo docker network create --driver bridge reverse-proxy`
+`sudo docker-compose build --force-rm --no-cache --pull`
+`sudo docker-compose up -d --force-recreate --remove-orphans`
+`sudo docker ps`
 
-contact — contains basic customer data
-notes — holds information collection from Contact by sales people.
-users — information about sales people
+## check in browser
 
-The Contact table contains basic customer information including names, company addresses, project information, and so forth.
+http://mybizness.local
+http://db.localhost
 
-The Notes table stores all sales activity information such as meetings and phone calls.
 
-The Users table holds login information about users of the system such as usernames and passwords. Users can also have roles, such as Sales or Manager.
-
-All other tables are lookup tables to join to the three main relational database tables.
-
-contact_status — contains contact status such as Lead and Opportunity. Each indicates a different stage in a typical sales cycle
-task_status — the task status can be either Pending or Completed
-user_status — a sale person can be Active or Inactive
-todo_type — a type of task either Task or Meeting
-todo_desc — description of a task such as Follow Up Email, Phone Call, and Conference etc.
-roles — a user can be either a Sales Rep or a Manager
-
-Login: email + 123456 / 12345678
 
 
 
