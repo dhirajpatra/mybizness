@@ -9,34 +9,40 @@ If you are a sole business owner, micro enterprise or a small business or want t
 ## How to install to develop
 
 Clone the code and change branch to dev:
+
 `git clone https://github.com/dhirajpatra/mybizness.git mybizness`
+
 `git checkout dev`
 
 ## Install VSCode IDE along with following pluggings
 
-Docker
-Format HTML in PHP
-Bracket Pair Colorizer
-jQuwey Code Snippets
-js-css-html formatter
-php cs fixer
-php docblocker
-php extension pack
-php intelephense
-phpcs
-phpfrm - php formatter
-yaml
+* Docker
+* Format HTML in PHP
+* Bracket Pair Colorizer
+* jQuwey Code Snippets
+* js-css-html formatter
+* php cs fixer
+* php docblocker
+* php extension pack
+* php intelephense
+* phpcs
+* phpfrm - php formatter
+* yaml
 
 ## how to run and test
 
 `sudo docker network create --driver bridge reverse-proxy`
+
 `sudo docker-compose build --force-rm --no-cache --pull`
+
 `sudo docker-compose up -d --force-recreate --remove-orphans`
+
 `sudo docker ps`
 
 ## check in browser
 
 http://mybizness.local
+
 http://db.localhost
 
 
