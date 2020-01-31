@@ -1,8 +1,8 @@
 
 #!/bin/sh
 
-CONTAINER=`sudo docker ps|grep docker-esy-crm_database_1|awk '{print $1}'`
-DB='myapp_07061974'
+CONTAINER=`sudo docker ps|grep mybizness_database_1|awk '{print $1}'`
+DB='mybiznessapp_07061974'
 USER='root'
 PASSWORD='ds_@^5435345#1jjh2R_VFFGG'
 SQLFILE="$(date +%Y-%m-%d-%H-%M-%S).sql"

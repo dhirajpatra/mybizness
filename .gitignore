@@ -1,5 +1,6 @@
-.phpintel
-sendgrid.env
-logs/*
-deploy/vhost.conf
-mysql-dump/
+/.phpintel
+/sendgrid.env
+/logs/*
+/deploy/vhost.conf
+/mysql-dump/
+/db/backup
