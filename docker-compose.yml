@@ -20,19 +20,44 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     image: jrcs/letsencrypt-nginx-proxy-companion
 
+  webserver:
+    container_name: webserver
+    depends_on:
+      - letsencrypt-nginx-proxy-companion
+    build:
+      context: ./
+      dockerfile: deploy/web.docker
+    expose:
+      - "80"
+    networks:
+      - reverse-proxy
+      - back
+    restart: always
+    volumes:
+      - ./deploy/nginx/htpasswd:/etc/nginx/htpasswd
+      - ./deploy/nginx/ssl:/etc/nginx/certs
+      - ./:/var/www
+    environment:
+      - "VIRTUAL_HOST=mybizness.local"
+      - "VIRTUAL_PORT=49256"
+      - "LETSENCRYPT_EMAIL=dhiraj.patra@gmail.com"
+      - "LETSENCRYPT_HOST=mybizness.local"
+    links:
+      - wordpress
+
   wordpress:
     depends_on:
       - database
       - letsencrypt-nginx-proxy-companion
-    image: wordpress:latest
+    image: wordpress:php7.3-fpm-alpine
     expose:
       - "80"
     restart: always
     volumes:
       - ./src:/var/www/html
     environment:
-      - "VIRTUAL_HOST=mybizness.local"
-      - "VIRTUAL_PORT=49257"
+      # - "VIRTUAL_HOST=mybizness.local"
+      # - "VIRTUAL_PORT=49257"
       - "WORDPRESS_DB_HOST=database"
       - "WORDPRESS_DB_USER=root"
       - "WORDPRESS_DB_PASSWORD=ds_@^5435345#1jjh2R_VFFGG"
